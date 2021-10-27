@@ -7,9 +7,16 @@ public class World {
     }
 
     public static void main(String[] args) {
-        Scanner getInput = new Scanner(System.in);
-        String[] arguments = getInput.nextLine().split(" ");
-        run(stringToEnum(arguments));
+//        Scanner getInput = new Scanner(System.in);
+//        String[] arguments = getInput.nextLine().split(" ");
+//        run(stringToEnum(arguments));
+
+        MapDirection test = MapDirection.NORTH;
+        System.out.println(test);
+        System.out.println(test.next());
+        System.out.println(test.previous());
+        //System.out.println(test.toUnitVector());
+        Vector2D test_2 = new Vector2D(1, 2);
     }
 
     public static Direction[] stringToEnum(String[] args) {
