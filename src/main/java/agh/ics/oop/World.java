@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class World {
@@ -7,16 +8,41 @@ public class World {
     }
 
     public static void main(String[] args) {
-//        Scanner getInput = new Scanner(System.in);
-//        String[] arguments = getInput.nextLine().split(" ");
+        Scanner getInput = new Scanner(System.in);
+        String[] arguments = getInput.nextLine().split(" ");
+        OptionParser parser = new OptionParser();
+        Animal frog = new Animal();
+
+        for (MoveDirection elem : parser.parse(arguments)){
+            frog.move(elem);
+            System.out.println(frog);
+        }
+
 //        run(stringToEnum(arguments));
 
-        MapDirection test = MapDirection.NORTH;
-        System.out.println(test);
-        System.out.println(test.next());
-        System.out.println(test.previous());
-        //System.out.println(test.toUnitVector());
-        Vector2D test_2 = new Vector2D(1, 2);
+//        MapDirection test = MapDirection.NORTH;
+//        System.out.println(test);
+//        System.out.println(test.next());
+//        System.out.println(test.previous());
+//        System.out.println(test.toUnitVector());
+//        Vector2D test_2 = new Vector2D(1, 2);
+
+//        Animal frog = new Animal();
+//        System.out.println(frog);
+//        frog.move(MoveDirection.FORWARD);
+//        System.out.println(frog);
+//        frog.move(MoveDirection.LEFT);
+//        System.out.println(frog);
+//        frog.move(MoveDirection.BACKWARD);
+//        System.out.println(frog);
+//        frog.move(MoveDirection.RIGHT);
+//        System.out.println(frog);
+//        frog.move(MoveDirection.FORWARD);
+//        System.out.println(frog);
+//        frog.move(MoveDirection.FORWARD);
+//        System.out.println(frog);
+//        frog.move(MoveDirection.FORWARD);
+//        System.out.println(frog);
     }
 
     public static Direction[] stringToEnum(String[] args) {

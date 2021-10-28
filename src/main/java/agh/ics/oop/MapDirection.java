@@ -40,9 +40,9 @@ public enum MapDirection {
         Vector2D result = null;
         switch (this){
             case NORTH -> result = new Vector2D(0, 1);
-            case WEST -> result = new Vector2D(1, 0);
+            case WEST -> result = new Vector2D(-1, 0);
             case SOUTH -> result = new Vector2D(0, -1);
-            case EAST -> result = new Vector2D(-1, 0);
+            case EAST -> result = new Vector2D(1, 0);
         }
         return result;
     }
