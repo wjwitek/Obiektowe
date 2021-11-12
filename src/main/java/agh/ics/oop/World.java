@@ -8,41 +8,12 @@ public class World {
     }
 
     public static void main(String[] args) {
-        Scanner getInput = new Scanner(System.in);
-        String[] arguments = getInput.nextLine().split(" ");
-        OptionParser parser = new OptionParser();
-        Animal frog = new Animal();
-
-        for (MoveDirection elem : parser.parse(arguments)){
-            frog.move(elem);
-            System.out.println(frog);
-        }
-
-//        run(stringToEnum(arguments));
-
-//        MapDirection test = MapDirection.NORTH;
-//        System.out.println(test);
-//        System.out.println(test.next());
-//        System.out.println(test.previous());
-//        System.out.println(test.toUnitVector());
-//        Vector2D test_2 = new Vector2D(1, 2);
-
-//        Animal frog = new Animal();
-//        System.out.println(frog);
-//        frog.move(MoveDirection.FORWARD);
-//        System.out.println(frog);
-//        frog.move(MoveDirection.LEFT);
-//        System.out.println(frog);
-//        frog.move(MoveDirection.BACKWARD);
-//        System.out.println(frog);
-//        frog.move(MoveDirection.RIGHT);
-//        System.out.println(frog);
-//        frog.move(MoveDirection.FORWARD);
-//        System.out.println(frog);
-//        frog.move(MoveDirection.FORWARD);
-//        System.out.println(frog);
-//        frog.move(MoveDirection.FORWARD);
-//        System.out.println(frog);
+        String[] argsTest = {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
+        MoveDirection[] directions = new OptionParser().parse(argsTest);
+        IWorldMap map = new RectangularMap(10, 5);
+        Vector2D[] positions = { new Vector2D(2,2), new Vector2D(3,4) };
+        IEngine engine = new SimulationEngine(directions, map, positions);
+        engine.run();
     }
 
     public static Direction[] stringToEnum(String[] args) {
