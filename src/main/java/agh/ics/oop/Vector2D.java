@@ -1,8 +1,8 @@
 package agh.ics.oop;
 
 public class Vector2D {
-    public final int x;
-    public final int y;
+    public int x;
+    public int y;
 
     public Vector2D(int x, int y){
         this.x = x;
@@ -57,5 +57,13 @@ public class Vector2D {
         int x = -this.x;
         int y = -this.y;
         return new Vector2D(x, y);
+    }
+
+    public void modifyX(int newX){
+        this.x = newX;
+    }
+
+    public void modifyY(int newY){
+        this.y = newY;
     }
 }

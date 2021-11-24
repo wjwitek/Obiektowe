@@ -65,4 +65,12 @@ public class Animal {
     public Vector2D getPosition(){
         return this.position;
     }
+
+    public boolean equals(Object other){
+        if (this == other)
+            return true;
+        if (!(other instanceof Animal that))
+            return false;
+        return this.position.equals(((Animal) other).getPosition());
+    }
 }
