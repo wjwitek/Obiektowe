@@ -13,15 +13,15 @@ public class GrassField extends AbstractWorldMap{
 
         // choose random position for grass
         for (int i=0; i<n; i++){
-            int x = (int)(Math.random() * (sqr_n + 1));
-            int y = (int)(Math.random() * (sqr_n + 1));
-            Vector2D position = new Vector2D(x, y);
+            int x, y;
+            Vector2D position = new Vector2D(0, 0);
             boolean same = true;
             while (same){
-                same = this.grasses.containsKey(position);
                 x = (int)(Math.random() * (sqr_n + 1));
                 y = (int)(Math.random() * (sqr_n + 1));
-                position = new Vector2D(x, y);
+                position.modifyY(y);
+                position.modifyX(x);
+                same = this.grasses.containsKey(position);
             }
             this.grasses.put(position, new Grass(position));
         }

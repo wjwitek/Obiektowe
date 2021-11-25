@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 public class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
     protected Vector2D leftCorner;
     protected Vector2D rightCorner;
-    protected LinkedHashMap<Vector2D, Animal> animals = new LinkedHashMap<>();
+    public LinkedHashMap<Vector2D, Animal> animals = new LinkedHashMap<>();
 
     public AbstractWorldMap(int width, int height) {
         this.leftCorner = new Vector2D(0, 0);
