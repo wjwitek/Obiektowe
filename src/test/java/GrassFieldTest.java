@@ -42,7 +42,7 @@ public class GrassFieldTest {
             Animal temp = new Animal(map, elem);
             map.place(temp);
         }
-        map.grasses.add(new Grass(new Vector2D(2, 2)));
+        map.grasses.put(new Vector2D(2, 2), new Grass(new Vector2D(2, 2)));
         assertEquals(new Animal(map, new Vector2D(2, 2)), map.objectAt(new Vector2D(2, 2)));
     }
 }
