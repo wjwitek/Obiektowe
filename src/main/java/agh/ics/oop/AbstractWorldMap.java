@@ -18,11 +18,6 @@ public class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
         this.rightCorner = new Vector2D(sqr_n, sqr_n);
     }
 
-    public String toString() {
-        MapVisualizer visualizer = new MapVisualizer(this);
-        return visualizer.draw(this.leftCorner, this.rightCorner);
-    }
-
     @Override
     public boolean canMoveTo(Vector2D position) {
         if (this.isOccupied(position)) {
@@ -34,7 +29,7 @@ public class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
     @Override
     public boolean place(Animal animal) {
         if (this.isOccupied(animal.getPosition())) {
-            return false;
+            throw new IllegalArgumentException("Cannot add animal to" + animal.getPosition());
         }
         animals.put(animal.getPosition(), animal);
         animal.addObserver(this);

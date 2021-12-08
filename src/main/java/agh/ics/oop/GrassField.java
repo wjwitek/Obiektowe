@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 
 public class GrassField extends AbstractWorldMap{
     public final LinkedHashMap<Vector2D, Grass> grasses = new LinkedHashMap<>();
+    private final MapBoundary mapBoundary = new MapBoundary();
 
     public GrassField(int n){
         super(n);
@@ -23,7 +24,10 @@ public class GrassField extends AbstractWorldMap{
                 position.modifyX(x);
                 same = this.grasses.containsKey(position);
             }
-            this.grasses.put(position, new Grass(position));
+            Grass newGrass = new Grass(position);
+            this.grasses.put(position, newGrass);
+            this.mapBoundary.addObject(newGrass);
+
         }
     }
 
@@ -59,6 +63,16 @@ public class GrassField extends AbstractWorldMap{
             return this.grasses.get(position);
         }
         return null;
+    }
+
+    public boolean place(Animal animal){
+        this.mapBoundary.addObject(animal);
+        return super.place(animal);
+    }
+
+    public String toString(){
+        MapVisualizer visualizer = new MapVisualizer(this);
+        return visualizer.draw(this.mapBoundary.leftCorner(), this.mapBoundary.rightCorner());
     }
 }
 

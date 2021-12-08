@@ -1,6 +1,8 @@
 package agh.ics.oop;
 
-public class Grass {
+import java.util.ArrayList;
+
+public class Grass implements IMapElement{
     private final Vector2D position;
 
     public Grass(Vector2D pos){

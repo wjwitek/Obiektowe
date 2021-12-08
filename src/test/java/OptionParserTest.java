@@ -8,9 +8,22 @@ public class OptionParserTest {
     @Test
     public void parseTest(){
         MoveDirection[] correctOutput = {MoveDirection.RIGHT, MoveDirection.FORWARD, MoveDirection.LEFT, MoveDirection.BACKWARD};
-        String[] input = {"r", "gsf", "forward", "lekd", "l", "sdfj", "backward"};
-        String[] otherInput = {"right", "f", "left", "b", "v", "g"};
+        String[] input = {"r", "forward", "l", "l", "f", "backward"};
+        String[] otherInput = {"right", "f", "left", "b"};
         assertArrayEquals(correctOutput, new OptionParser().parse(input));
         assertArrayEquals(correctOutput, new OptionParser().parse(otherInput));
+    }
+
+    @Test
+    public void illegalArgumentTest(){
+        boolean test = true;
+        try{
+            String[] input = {"r", "forward", "l", "l", "f", "backward"};
+            MoveDirection[] parsedInput = new OptionParser().parse(input);
+        }
+        catch (IllegalArgumentException ex){
+            test = false;
+        }
+        assertFalse(test);
     }
 }

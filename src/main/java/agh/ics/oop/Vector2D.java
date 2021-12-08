@@ -73,4 +73,24 @@ public class Vector2D {
     public int hashCode(){
         return Objects.hash(this.x, this.y);
     }
+
+    public int compareX(Vector2D other){
+        if (this.x < other.x){
+            return -1;
+        }
+        if (this.x > other.x){
+            return 1;
+        }
+        return Integer.compare(this.y, other.y);
+    }
+
+    public int compareY(Vector2D other){
+        if (this.y < other.y){
+            return -1;
+        }
+        if (this.y > other.y){
+            return 1;
+        }
+        return Integer.compare(this.x, other.x);
+    }
 }

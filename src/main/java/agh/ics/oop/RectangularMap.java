@@ -5,8 +5,8 @@ public class RectangularMap extends AbstractWorldMap{
         super(width, height);
     }
 
-    public String toString(){
-        MapVisualizer visualize = new MapVisualizer(this);
-        return visualize.draw(this.leftCorner, this.rightCorner);
+    public String toString() {
+        MapVisualizer visualizer = new MapVisualizer(this);
+        return visualizer.draw(this.leftCorner, this.rightCorner);
     }
 }

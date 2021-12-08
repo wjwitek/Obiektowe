@@ -2,7 +2,7 @@ package agh.ics.oop;
 
 import java.util.ArrayList;
 
-public class Animal {
+public class Animal implements IMapElement{
     private MapDirection orientation;
     private Vector2D position;
     private IWorldMap map;
