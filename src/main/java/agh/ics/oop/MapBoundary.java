@@ -6,10 +6,10 @@ import java.util.TreeSet;
 public class MapBoundary implements IPositionChangeObserver{
     // assumption: point of this class is only to set map boundaries, so resolving multiple animals on one position is
     // not important
-    private SortedSet<Vector2D> animalsX = new TreeSet<>(Vector2D::compareX);
-    private SortedSet<Vector2D> animalsY = new TreeSet<>(Vector2D::compareY);
-    private SortedSet<Vector2D> grassesX = new TreeSet<>(Vector2D::compareX);
-    private SortedSet<Vector2D> grassesY = new TreeSet<>(Vector2D::compareY);
+    private final SortedSet<Vector2D> animalsX = new TreeSet<>(Vector2D::compareX);
+    private final SortedSet<Vector2D> animalsY = new TreeSet<>(Vector2D::compareY);
+    private final SortedSet<Vector2D> grassesX = new TreeSet<>(Vector2D::compareX);
+    private final SortedSet<Vector2D> grassesY = new TreeSet<>(Vector2D::compareY);
 
     public void positionChanged(Vector2D oldPosition, Vector2D newPosition) {
         // assumption: only animals change position, grass can be only added or deleted

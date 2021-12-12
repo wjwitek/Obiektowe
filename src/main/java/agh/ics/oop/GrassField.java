@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 
 public class GrassField extends AbstractWorldMap{
     public final LinkedHashMap<Vector2D, Grass> grasses = new LinkedHashMap<>();
-    private final MapBoundary mapBoundary = new MapBoundary();
+    public final MapBoundary mapBoundary = new MapBoundary();
 
     public GrassField(int n){
         super(n);
@@ -31,9 +31,9 @@ public class GrassField extends AbstractWorldMap{
         }
     }
 
-    public boolean isOccupied(Vector2D position) {
-        return super.isOccupied(position) || this.grasses.containsKey(position);
-    }
+//    public boolean isOccupied(Vector2D position) {
+//        return super.isOccupied(position) || this.grasses.containsKey(position);
+//    }
 
     public boolean canMoveTo(Vector2D position){
         if (objectAt(position) instanceof Animal){

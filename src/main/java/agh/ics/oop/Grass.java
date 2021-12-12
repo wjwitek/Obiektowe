@@ -13,7 +13,8 @@ public class Grass implements IMapElement{
         return this.position;
     }
 
-    public String toString(){
-        return "*";
-    }
+    public String toString(){ return "*"; }
+
+    @Override
+    public String getPath() { return "src\\main\\resources\\img\\grass.png"; }
 }

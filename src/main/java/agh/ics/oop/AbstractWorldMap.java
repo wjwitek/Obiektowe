@@ -3,8 +3,8 @@ package agh.ics.oop;
 import java.util.LinkedHashMap;
 
 public class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
-    protected Vector2D leftCorner;
-    protected Vector2D rightCorner;
+    public Vector2D leftCorner;
+    public Vector2D rightCorner;
     public LinkedHashMap<Vector2D, Animal> animals = new LinkedHashMap<>();
 
     public AbstractWorldMap(int width, int height) {
@@ -28,7 +28,7 @@ public class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
 
     @Override
     public boolean place(Animal animal) {
-        if (this.isOccupied(animal.getPosition())) {
+        if (this.isOccupied(animal.getPosition()) && !(objectAt(animal.getPosition()) instanceof Grass)) {
             throw new IllegalArgumentException("Cannot add animal to" + animal.getPosition());
         }
         animals.put(animal.getPosition(), animal);

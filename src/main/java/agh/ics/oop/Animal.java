@@ -6,7 +6,7 @@ public class Animal implements IMapElement{
     private MapDirection orientation;
     private Vector2D position;
     private IWorldMap map;
-    private ArrayList<IPositionChangeObserver> observers = new ArrayList<>();
+    private final ArrayList<IPositionChangeObserver> observers = new ArrayList<>();
 
     public Animal(){
         this.orientation = MapDirection.NORTH;
@@ -25,13 +25,15 @@ public class Animal implements IMapElement{
         this.map = map;
     }
 
+    @Override
     public String toString() {
-        switch (this.orientation) {
-            case NORTH -> {return "^";}
-            case EAST -> {return ">";}
-            case WEST -> {return "<";}
-            default ->  {return "v";}
-        }
+//        switch (this.orientation) {
+//            case NORTH -> {return "^";}
+//            case EAST -> {return ">";}
+//            case WEST -> {return "<";}
+//            default ->  {return "v";}
+//        }
+        return position.toString() + orientation.toString();
     }
 
     public boolean isAt(Vector2D position){
@@ -87,9 +89,22 @@ public class Animal implements IMapElement{
     }
 
     // inform all observers that position off animal has changed
-    private void positionChanged(Vector2D oldPosition, Vector2D newPosition){
+    private void positionChanged(Vector2D oldPosition, Vector2D newPosition) {
         for (IPositionChangeObserver elem: this.observers){
             elem.positionChanged(oldPosition, newPosition);
+        }
+    }
+
+    @Override
+    public String getPath(){
+        if (orientation == MapDirection.EAST){
+            return "src\\main\\resources\\img\\right.png";
+        }else if (orientation == MapDirection.NORTH){
+            return "src\\main\\resources\\img\\up.png";
+        }else if (orientation == MapDirection.SOUTH){
+            return "src\\main\\resources\\img\\down.png";
+        }else{
+            return "src\\main\\resources\\img\\left.png";
         }
     }
 }

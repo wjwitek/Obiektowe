@@ -1,16 +1,20 @@
 package agh.ics.oop;
 
+import agh.ics.oop.gui.App;
+import javafx.application.Platform;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimulationEngine implements IEngine{
+public class SimulationEngine implements IEngine, Runnable{
     final private MoveDirection[] moves;
-    final private IWorldMap map;
     public final List<Animal> animals = new ArrayList<>();
+    private final App app;
+    private int i = 0;
 
-    public SimulationEngine(MoveDirection[] moves, IWorldMap map, Vector2D[] animals){
+    public SimulationEngine(MoveDirection[] moves, IWorldMap map, Vector2D[] animals, App app){
         this.moves = moves;
-        this.map = map;
+        this.app = app;
 
         // add animals to the map
         for (Vector2D elem: animals){
@@ -19,17 +23,43 @@ public class SimulationEngine implements IEngine{
                 this.animals.add(temp);
             }
         }
-
-        System.out.println(this.map);
     }
 
     @Override
     public void run() {
-        int numOfMoves = moves.length;
+        System.out.println("Thread started.");
         int n = this.animals.size();
-        for (int i=0; i<numOfMoves; i++){
-            this.animals.get(i % n).move(moves[i]);
-            System.out.println(this.map);
+        this.animals.get(i % n).move(moves[i]);
+        try {
+            this.app.drawNewGrid();
         }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+            System.exit(1);
+        }
+        i ++;
     }
+
+//    @Override
+//    public void run() {
+//        System.out.println("Thread started.");
+//        int n = this.animals.size();
+//        for (int i=0; i<moves.length; i++){
+//            try {
+//                Thread.sleep(1500);
+//            } catch (InterruptedException ex) {
+//                System.out.println(ex.getMessage());
+//                System.exit(1);
+//            }
+//            this.animals.get(i % n).move(moves[i]);
+//            try {
+//                this.app.drawNewGrid();
+//            }
+//            catch (Exception ex){
+//                System.out.println(ex.getMessage());
+//                System.exit(1);
+//            }
+//        }
+//        //i ++;
+//    }
 }

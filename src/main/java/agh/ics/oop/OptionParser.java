@@ -1,7 +1,5 @@
 package agh.ics.oop;
 
-import java.util.Arrays;
-
 public class OptionParser {
     public MoveDirection[] parse(String[] input){
         MoveDirection[] output = new MoveDirection[input.length];
