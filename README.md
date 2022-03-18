@@ -1,2 +1,2 @@
 # Obiektowe
-Solutions to excercise from course "Programowanie obiektowe".
+Solutions to excercise from course "Programowanie obiektow", 2021Z.
